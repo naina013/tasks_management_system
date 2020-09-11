@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TMS.Models
+namespace T.Models
 {
     public partial class Subtask
     {
@@ -14,5 +14,10 @@ namespace TMS.Models
         public int TaskId { get; set; }
 
         public virtual Task Task { get; set; }
+
+        public static implicit operator List<object>(Subtask v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

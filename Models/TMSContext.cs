@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace TMS.Models
+namespace T.Models
 {
     public partial class TMSContext : DbContext
     {
@@ -18,14 +18,14 @@ namespace TMS.Models
         public virtual DbSet<Subtask> Subtask { get; set; }
         public virtual DbSet<Task> Task { get; set; }
 
-        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Server=laptop-doatngi0\\sqlexpress;Database=TMS;UID=hope;PWD=hope;");
             }
-        }*/
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

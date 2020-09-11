@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace TMS.Models
+namespace T.Models
 {
     public partial class Task
     {
         public Task()
         {
-            Subtask = new HashSet<Subtask>();
+            Subtask = new List<Subtask>();
         }
 
         public int TaskId { get; set; }
@@ -17,6 +17,6 @@ namespace TMS.Models
         public DateTime TaskFdate { get; set; }
         public string TaskState { get; set; }
 
-        public virtual ICollection<Subtask> Subtask { get; set; }
+        public virtual List<Subtask> Subtask { get; set; }
     }
 }
