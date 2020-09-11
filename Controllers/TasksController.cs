@@ -9,6 +9,7 @@ using T.Models;
 //using Task = T.Models.Task;
 using T.REPO;
 using Newtonsoft.Json;
+using Task = T.Models.Task;
 
 namespace T.Controllers
 {
@@ -17,7 +18,7 @@ namespace T.Controllers
     public class TasksController : ControllerBase
     {
         private readonly TMSContext _context;
-        IPostRepository postRepository;
+        
 
         public TasksController(TMSContext context)
         {
@@ -57,6 +58,18 @@ namespace T.Controllers
             }
             return task;
         }
+
+        
+        /*// GET: api/Tasks/?date=2020-07-10
+        [HttpGet]
+        public async Task<List<Models.Task>> GetCSV(DateTime date)
+        {
+            StateCheck state = new StateCheck();
+            List<Task> inProgressData = await state.getCsvData(date, _context);
+            return inProgressData;
+        }
+        */
+
 
         // PUT: api/Tasks/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using T.Models;
+using Task = T.Models.Task;
 
 namespace T.REPO
 {
@@ -26,7 +27,7 @@ namespace T.REPO
 
             foreach(Subtask s in subtasks)
             {
-                if (s.SubState.ToString().Equals("inProgress"))
+                if (s.SubState.ToString().Trim().Equals("inProgress"))
                 {
                     task.TaskState = "inProgress";
                     context.Update(task);
@@ -37,7 +38,7 @@ namespace T.REPO
 
             foreach (Subtask s in subtasks)
             {
-                if (s.SubState.ToString().Equals("Planned"))
+                if (s.SubState.ToString().Trim().Equals("Planned"))
                 {
                     task.TaskState = "Planned";
                     context.Update(task);
@@ -52,5 +53,29 @@ namespace T.REPO
 
 
         }
+        public async Task<List<Task>> getCsvData(DateTime date, TMSContext context)
+        {
+            List<Task> task = await(
+                                            from t in context.Task
+                                            select new Task
+                                            {
+                                                TaskName = t.TaskName,
+                                                TaskDesc = t.TaskDesc,
+                                                TaskSdate = t.TaskSdate,
+                                                TaskFdate = t.TaskFdate,
+                                                TaskState = t.TaskState
+                                            }).ToListAsync();
+            List<Task> result = new List<Task>();
+            
+            foreach (Task s in task)
+            {
+                if(s.TaskState.ToString().Trim().Equals("inProgress") && s.TaskSdate == date.Date)
+                {
+                    result.Add(s);
+                }
+            }
+            return result;
+        }
+
     }
 }
