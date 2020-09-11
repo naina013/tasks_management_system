@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace T.Models
 {
     public partial class Subtask
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Key]
         public int SubId { get; set; }
         public string SubName { get; set; }
         public string SubDesc { get; set; }

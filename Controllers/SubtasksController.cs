@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T.Models;
+using T.REPO;
 
 namespace T.Controllers
 {
@@ -14,6 +15,7 @@ namespace T.Controllers
     public class SubtasksController : ControllerBase
     {
         private readonly TMSContext _context;
+        private StateCheck state = new StateCheck();
 
         public SubtasksController(TMSContext context)
         {
@@ -57,6 +59,7 @@ namespace T.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+                state.manageState(subtask.TaskId, _context);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -83,6 +86,7 @@ namespace T.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+                state.manageState(subtask.TaskId, _context);
             }
             catch (DbUpdateException)
             {

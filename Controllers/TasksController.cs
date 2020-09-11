@@ -35,7 +35,7 @@ namespace T.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Models.Task>> GetTask(int id)
         {
-            postRepository = new PostRepository(_context);
+            //postRepository = new PostRepository(_context);
             var task = await _context.Task.FindAsync(id);
             List<Subtask> subtasks = await (
                                             from st in _context.Subtask
@@ -49,13 +49,7 @@ namespace T.Controllers
                                                 SubState = st.SubState
                                             }).ToListAsync();
             task.Subtask = subtasks;
-            //var subtasks = await _context.Subtask.ToListAsync();
-            //List<Subtask> subtasks = await _context.Subtask.ToListAsync(); 
-            //task.Subtask = subtasks;
-            //ICollection<Subtask> data = postRepository.ReadSubtask(id);
-            //Console.WriteLine("**************************************************************************s");
-            //Console.WriteLine(data);
-            //var response = JsonConvert.SerializeObject(task);
+            
 
             if (task == null)
             {
