@@ -12,4 +12,10 @@ Microservice for a simple Task Management System.(ASP.NET Core)
     3.Swashbuckle.AspNetCore
     4.Xunit
     
-Implemented and documented through Swagger.
+##### To run the API:
+    1.Run the sql script "script" in MS Sql.
+    2.Open project in Microsoft VIsual Studio.
+    3.Click on IIS Express.
+    4.Your browser will open to a Swagger UI.
+    5.Here you can test and checkout each functionality of the API.
+    6.Have Fun!
