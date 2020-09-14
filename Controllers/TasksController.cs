@@ -1,30 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T.Models;
-using T.REPO;
-using Newtonsoft.Json;
-using Task = T.Models.Task;
 
 namespace T.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TasksController : ControllerBase
+    
+    public class TasksController : ControllerBase 
     {
-        private readonly TMSContext _context;
-        
 
+        private readonly TMSContext _context;
         public TasksController(TMSContext context)
         {
             _context = context;
         }
 
         // GET: api/Tasks
+        /// <summary>
+        /// Retrieve the list of all tasks.
+        /// </summary>
+        /// <returns>List</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Models.Task>>> GetTask()
         {
@@ -32,10 +31,15 @@ namespace T.Controllers
         }
 
         // GET: api/Tasks/5
+        /// <summary>
+        /// Retrieve the task by their ID.
+        /// </summary>
+        /// <param name="id">The ID of the desired task.</param>
+        /// <returns> Task</returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Models.Task>> GetTask(int id)
         {
-            //postRepository = new PostRepository(_context);
+
             var task = await _context.Task.FindAsync(id);
             List<Subtask> subtasks = await (
                                             from st in _context.Subtask
@@ -58,21 +62,15 @@ namespace T.Controllers
             return task;
         }
 
-        
-        /*// GET: api/Tasks/?date=2020-07-10
-        [HttpGet]
-        public async Task<List<Models.Task>> GetCSV(DateTime date)
-        {
-            StateCheck state = new StateCheck();
-            List<Task> inProgressData = await state.getCsvData(date, _context);
-            return inProgressData;
-        }
-        */
-
-
         // PUT: api/Tasks/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// <summary>
+        /// Update the task by their ID.
+        /// </summary>
+        /// <param name="id">ID of the task to be updated.</param>
+        /// <param name="task"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutTask(int id, Models.Task task)
         {
@@ -105,6 +103,11 @@ namespace T.Controllers
         // POST: api/Tasks
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// <summary>
+        /// Insert a new task.
+        /// </summary>
+        /// <param name="task"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Models.Task>> PostTask(Models.Task task)
         {
@@ -129,6 +132,11 @@ namespace T.Controllers
         }
 
         // DELETE: api/Tasks/5
+        /// <summary>
+        /// Delete the task by their ID.
+        /// </summary>
+        /// <param name="id">Enter the ID of the task to be deleted.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<Models.Task>> DeleteTask(int id)
         {

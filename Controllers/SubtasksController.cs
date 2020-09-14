@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using T.Models;
@@ -23,6 +21,10 @@ namespace T.Controllers
         }
 
         // GET: api/Subtasks
+        /// <summary>
+        /// Retrieve the list of all subtasks.
+        /// </summary>
+        /// <returns>List</returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Subtask>>> GetSubtask()
         {
@@ -30,6 +32,11 @@ namespace T.Controllers
         }
 
         // GET: api/Subtasks/5
+        /// <summary>
+        /// Retrieve the subtask by their ID.
+        /// </summary>
+        /// <param name="id">The ID of the desired subtask.</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public async Task<ActionResult<Subtask>> GetSubtask(int id)
         {
@@ -46,6 +53,12 @@ namespace T.Controllers
         // PUT: api/Subtasks/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// <summary>
+        /// Update the subtask by their ID.
+        /// </summary>
+        /// <param name="id">ID of the subtask to be updated.</param>
+        /// <param name="subtask"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public async Task<IActionResult> PutSubtask(int id, Subtask subtask)
         {
@@ -79,6 +92,11 @@ namespace T.Controllers
         // POST: api/Subtasks
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /// <summary>
+        /// Insert a new subtask.
+        /// </summary>
+        /// <param name="subtask"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ActionResult<Subtask>> PostSubtask(Subtask subtask)
         {
@@ -104,6 +122,11 @@ namespace T.Controllers
         }
 
         // DELETE: api/Subtasks/5
+        /// <summary>
+        /// Delete the subtask by their ID.
+        /// </summary>
+        /// <param name="id">Enter the ID of the subtask to be deleted.</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public async Task<ActionResult<Subtask>> DeleteSubtask(int id)
         {

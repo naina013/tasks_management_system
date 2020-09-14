@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>T</name>
+    </assembly>
+    <members>
+        <member name="M:T.Controllers.SubtasksController.GetSubtask">
+            <summary>
+            Retrieve the list of all subtasks.
+            </summary>
+            <returns>List</returns>
+        </member>
+        <member name="M:T.Controllers.SubtasksController.GetSubtask(System.Int32)">
+            <summary>
+            Retrieve the subtask by their ID.
+            </summary>
+            <param name="id">The ID of the desired subtask.</param>
+            <returns></returns>
+        </member>
+        <member name="M:T.Controllers.SubtasksController.PutSubtask(System.Int32,T.Models.Subtask)">
+            <summary>
+            Update the subtask by their ID.
+            </summary>
+            <param name="id">ID of the subtask to be updated.</param>
+            <param name="subtask"></param>
+            <returns></returns>
+        </member>
+        <member name="M:T.Controllers.SubtasksController.PostSubtask(T.Models.Subtask)">
+            <summary>
+            Insert a new subtask.
+            </summary>
+            <param name="subtask"></param>
+            <returns></returns>
+        </member>
+        <member name="M:T.Controllers.SubtasksController.DeleteSubtask(System.Int32)">
+            <summary>
+            Delete the subtask by their ID.
+            </summary>
+            <param name="id">Enter the ID of the subtask to be deleted.</param>
+            <returns></returns>
+        </member>
+        <member name="M:T.Controllers.TasksController.GetTask">
+            <summary>
+            Retrieve the list of all tasks.
+            </summary>
+            <returns>List</returns>
+        </member>
+        <member name="M:T.Controllers.TasksController.GetTask(System.Int32)">
+            <summary>
+            Retrieve the task by their ID.
+            </summary>
+            <param name="id">The ID of the desired task.</param>
+            <returns> Task</returns>
+        </member>
+        <member name="M:T.Controllers.TasksController.PutTask(System.Int32,T.Models.Task)">
+            <summary>
+            Update the task by their ID.
+            </summary>
+            <param name="id">ID of the task to be updated.</param>
+            <param name="task"></param>
+            <returns></returns>
+        </member>
+        <member name="M:T.Controllers.TasksController.PostTask(T.Models.Task)">
+            <summary>
+            Insert a new task.
+            </summary>
+            <param name="task"></param>
+            <returns></returns>
+        </member>
+        <member name="M:T.Controllers.TasksController.DeleteTask(System.Int32)">
+            <summary>
+            Delete the task by their ID.
+            </summary>
+            <param name="id">Enter the ID of the task to be deleted.</param>
+            <returns></returns>
+        </member>
+        <member name="M:T.Controllers.ValuesController.GetCSV(System.DateTime)">
+            <summary>
+            Retrieve the CSV of all tasks whose state is "inProgress" for some date.
+            </summary>
+            <param name="date">Enter the date for which list of tasks inProgress is required.</param>
+            <returns>CSV File</returns>
+        </member>
+    </members>
+</doc>
